@@ -71,10 +71,15 @@ namespace GOOS_SampleTests.Services
         public void CreateTest_should_invoke_repository_one_time()
         {
             this._budgetService = new BudgetService(_budgetRepositoryStub);
+
             var model = new BudgetAddViewModel { Amount = 2000, Month = "2017-02" };
+            var wasCreate = false;
+            this._budgetService.Created += (sender, args) => { wasCreate = true; };
             this._budgetService.Create(model);
+
             _budgetRepositoryStub.Received()
                 .Save(Arg.Is<Budget>(x => x.Amount == 2000 && x.YearMonth == "2017-02"));
+            Assert.IsTrue(wasCreate);
         }
 
 
@@ -86,9 +91,12 @@ namespace GOOS_SampleTests.Services
             _budgetRepositoryStub.Read(Arg.Any<Func<Budget, bool>>())
                 .ReturnsForAnyArgs(budgetFromDb);
             var model = new BudgetAddViewModel { Amount = 2000, Month = "2017-02" };
+            var wasUpdated = false;
+            this._budgetService.Updated += (sender, args) => { wasUpdated = true; };
             this._budgetService.Create(model);
             _budgetRepositoryStub.Received()
                 .Save(Arg.Is<Budget>(x => x == budgetFromDb && x.Amount == 2000));
+            Assert.IsTrue(wasUpdated);
         }
     }
 }
