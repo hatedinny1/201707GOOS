@@ -1,4 +1,5 @@
 using System.Web.Mvc;
+using GOOS_Sample.Services;
 using Microsoft.Practices.Unity;
 using Unity.Mvc5;
 
@@ -14,7 +15,8 @@ namespace GOOS_Sample
             // it is NOT necessary to register your controllers
             
             // e.g. container.RegisterType<ITestService, TestService>();
-            
+            container.RegisterType<IBudgetService, budgetService>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

@@ -5,6 +5,7 @@ using GOOS_SampleTests.DataModelsForIntegrationTest;
 using System;
 using System.Linq;
 using System.Web.Mvc;
+using GOOS_Sample.Services;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -19,7 +20,7 @@ namespace GOOS_SampleTests.steps
         [BeforeScenario()]
         public void BeforeScenario()
         {
-            this._budgetController = new BudgetController();
+            this._budgetController = new BudgetController(new budgetService());
         }
 
         [When(@"add a budget")]
