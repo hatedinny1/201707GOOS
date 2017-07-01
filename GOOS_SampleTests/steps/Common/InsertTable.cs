@@ -2,7 +2,7 @@ using GOOS_SampleTests.DataModelsForIntegrationTest;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
-namespace GOOS_SampleTests.steps
+namespace GOOS_SampleTests.steps.Common
 {
     [Binding]
     public class InsertTable
