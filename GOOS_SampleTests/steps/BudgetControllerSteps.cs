@@ -6,6 +6,8 @@ using System;
 using System.Linq;
 using System.Web.Mvc;
 using GOOS_Sample.Services;
+using GOOS_SampleTests.steps.Common;
+using Microsoft.Practices.Unity;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -20,7 +22,7 @@ namespace GOOS_SampleTests.steps
         [BeforeScenario()]
         public void BeforeScenario()
         {
-            this._budgetController = new BudgetController(new budgetService());
+            this._budgetController = Hooks.UnityContainer.Resolve<BudgetController>();
         }
 
         [When(@"add a budget")]

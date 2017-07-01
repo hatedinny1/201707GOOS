@@ -15,7 +15,7 @@ namespace GOOS_Sample
             // it is NOT necessary to register your controllers
             
             // e.g. container.RegisterType<ITestService, TestService>();
-            container.RegisterType<IBudgetService, budgetService>();
+            container.RegisterType<IBudgetService, BudgetService>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
