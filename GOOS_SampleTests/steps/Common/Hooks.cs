@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using FluentAutomation;
+using GOOS_Sample.Models;
 using GOOS_Sample.Models.DataModels;
 using GOOS_Sample.Services;
 using GOOS_SampleTests.DataModelsForIntegrationTest;
@@ -65,6 +66,7 @@ namespace GOOS_SampleTests.steps.Common
         {
             UnityContainer = new UnityContainer();
             UnityContainer.RegisterType<IBudgetService, BudgetService>();
+            UnityContainer.RegisterType<IRepository<GOOS_Sample.Models.DataModels.Budget>, BudgetRepository>();
         }
         public static IUnityContainer UnityContainer
         {

@@ -1,4 +1,6 @@
 using System.Web.Mvc;
+using GOOS_Sample.Models;
+using GOOS_Sample.Models.DataModels;
 using GOOS_Sample.Services;
 using Microsoft.Practices.Unity;
 using Unity.Mvc5;
@@ -16,7 +18,7 @@ namespace GOOS_Sample
             
             // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IBudgetService, BudgetService>();
-
+            container.RegisterType<IRepository<Budget>, BudgetRepository>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }
